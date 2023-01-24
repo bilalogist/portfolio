@@ -1,0 +1,16 @@
+{
+    "freight-form-general-edit-step-text": "Status",
+    "freight-form-custom-edit-step-text": "Custom-Status",
+    "freight-form-create-heading": "Create New Freight",
+    "freight-form-edit-heading": "Edit ID: {{id}}",
+    "freight-form-save-next-btn-text": "Save & Next",
+    "freight-form-save-return-btn-text": "Save & Return",
+    "general-back-text": "Back",
+    "freight-shortcuts-task-1": "Update ETA", 
+    "freight-shortcuts-task-2": "Select Logistics Type", 
+    "freight-shortcuts-task-3": "Select Warehouse", 
+    "freight-shortcuts-task-4": "Select Notify Party", 
+    "freight-shortcuts-task-5": "Select Logistics", 
+    "freight-shortcuts-task-6": "Confirm clearance",
+    "freight-shortcuts-task-7": "Submit Delivery Date"
+}
