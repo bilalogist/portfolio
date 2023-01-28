@@ -1,3 +1,7 @@
+# Info
+
+This is a portfolio website created in React type script
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
