@@ -12,6 +12,7 @@
     "react-animated-text": "^0.1.4",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
+    "react-images-viewer": "^1.7.1",
     "react-scripts": "5.0.1",
     "tailwindcss": "^3.2.4",
     "web-vitals": "^2.1.4"

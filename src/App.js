@@ -17,12 +17,23 @@ import web3 from "./assets/web3.png";
 import web4 from "./assets/web4.png";
 import web5 from "./assets/web5.png";
 import web6 from "./assets/web6.png";
+import web7 from "./assets/web7.png";
 import one from "./assets/one.png";
 import { Wave } from "react-animated-text";
+import ImgsViewer from "react-images-viewer";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
+  const [showSlider, setSlider] = useState(true);
+  const [imageIndex, setImageIndex] = useState(0);
 
+  const gotoNext = (e) => {
+    setImageIndex(imageIndex + 1);
+    // setCurr()
+  };
+  const gotoPrev = () => {
+    setImageIndex(imageIndex - 1);
+  };
   return (
     <div className={darkMode ? "dark" : ""}>
       <main className=" bg-white px-10 dark:bg-gray-900 md:px-20 lg:px-40">
@@ -146,7 +157,12 @@ export default function Home() {
         </section>
         <section className="py-10">
           <div>
-            <h3 className="text-3xl py-1 dark:text-white ">Portofolio</h3>
+            <h3
+              className="text-3xl py-1 dark:text-white "
+              style={{ fontWeight: 800 }}
+            >
+              Portofolio
+            </h3>
             {/* <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
               Since the beginning of my journey as a freelance designer and
               developer, I've done remote work for
@@ -161,63 +177,48 @@ export default function Home() {
             </p> */}
           </div>
           <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
-            <div className="basis-1/3 flex-1 ">
+            <div className="basis-1/3 flex-1 " onClick={() => setSlider(true)}>
+              <p
+                style={{ marginBottom: 12, fontWeight: 700, fontSize: "22px" }}
+              >
+                ERP System
+              </p>
               <img
                 className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
+                style={{ width: "420px" }}
                 layout="responsive"
                 src={one}
               />
             </div>
-            <div className="basis-1/3 flex-1">
+            <div className="basis-1/3 flex-1 " onClick={() => setSlider(true)}>
+              <p
+                style={{ marginBottom: 12, fontWeight: 700, fontSize: "22px" }}
+              >
+                Kiosk Management System
+              </p>
               <img
                 className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
+                style={{ width: "420px" }}
                 layout="responsive"
-                src={web2}
-              />
-            </div>
-            <div className="basis-1/3 flex-1">
-              <img
-                className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
-                layout="responsive"
-                src={web3}
-              />
-            </div>
-            <div className="basis-1/3 flex-1">
-              <img
-                className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
-                layout="responsive"
-                src={web4}
-              />
-            </div>
-            <div className="basis-1/3 flex-1">
-              <img
-                className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
-                layout="responsive"
-                src={web5}
-              />
-            </div>
-            <div className="basis-1/3 flex-1">
-              <img
-                className="rounded-lg object-cover"
-                width={"100%"}
-                height={"100%"}
-                layout="responsive"
-                src={web6}
+                src={one}
               />
             </div>
           </div>
         </section>
       </main>
+      <ImgsViewer
+        imgs={[web1, web2, web3, web7, web4, web5, web6].map((img) => ({
+          src: img,
+        }))}
+        currImg={imageIndex}
+        isOpen={showSlider}
+        onClickPrev={gotoPrev}
+        onClickNext={gotoNext}
+        onClose={() => {
+          setImageIndex(0);
+          setSlider(false);
+        }}
+      />
     </div>
   );
 }
