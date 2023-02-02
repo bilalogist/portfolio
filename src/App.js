@@ -24,8 +24,20 @@ import ImgsViewer from "react-images-viewer";
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
-  const [showSlider, setSlider] = useState(true);
+  const [showSlider, setSlider] = useState(false);
+  const [sliderImages, setSliderImages] = useState([]);
   const [imageIndex, setImageIndex] = useState(0);
+
+  const handleSliderImages = (e) => {
+    const totalImages = parseInt(e.target?.dataset?.totalimages ?? 1);
+    let arr = [];
+    for (let i = 1; i <= totalImages; i++) {
+      arr.push({ src: `/projects/${e.target.name}/image${i}.png` });
+    }
+    console.log(arr);
+    setSliderImages(arr);
+    setSlider(true);
+  };
 
   const gotoNext = (e) => {
     setImageIndex(imageIndex + 1);
@@ -163,21 +175,9 @@ export default function Home() {
             >
               Portofolio
             </h3>
-            {/* <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
-              Since the beginning of my journey as a freelance designer and
-              developer, I've done remote work for
-              <span className="text-teal-500"> agencies </span>
-              consulted for <span className="text-teal-500">startups </span>
-              and collaborated with talanted people to create digital products
-              for both business and consumer use.
-            </p>
-            <p className="text-md py-2 leading-8 text-gray-800 dark:text-gray-200">
-              I offer from a wide range of services, including brand design,
-              programming and teaching.
-            </p> */}
           </div>
           <div className="flex flex-col gap-10 py-10 lg:flex-row lg:flex-wrap">
-            <div className="basis-1/3 flex-1 " onClick={() => setSlider(true)}>
+            <div className="basis-1/3 flex-1 ">
               <p
                 style={{ marginBottom: 12, fontWeight: 700, fontSize: "22px" }}
               >
@@ -188,9 +188,44 @@ export default function Home() {
                 style={{ width: "420px" }}
                 layout="responsive"
                 src={one}
+                name="erp"
+                data-totalimages="9"
+                onClick={handleSliderImages}
               />
             </div>
-            <div className="basis-1/3 flex-1 " onClick={() => setSlider(true)}>
+            <div className="basis-1/3 flex-1 ">
+              <p
+                style={{ marginBottom: 12, fontWeight: 700, fontSize: "22px" }}
+              >
+                Little Bee - LMS
+              </p>
+              <img
+                className="rounded-lg object-cover"
+                style={{ width: "420px" }}
+                layout="responsive"
+                src={"/projects/school/image4.png"}
+                name="school"
+                data-totalimages="5"
+                onClick={handleSliderImages}
+              />
+            </div>
+            <div className="basis-1/3 flex-1 ">
+              <p
+                style={{ marginBottom: 12, fontWeight: 700, fontSize: "22px" }}
+              >
+                Instant Matching System
+              </p>
+              <img
+                className="rounded-lg object-cover"
+                style={{ width: "420px" }}
+                layout="responsive"
+                src={"/projects/ims/image1.png"}
+                data-totalimages="9"
+                name="ims"
+                onClick={handleSliderImages}
+              />
+            </div>
+            <div className="basis-1/3 flex-1 ">
               <p
                 style={{ marginBottom: 12, fontWeight: 700, fontSize: "22px" }}
               >
@@ -200,16 +235,33 @@ export default function Home() {
                 className="rounded-lg object-cover"
                 style={{ width: "420px" }}
                 layout="responsive"
-                src={one}
+                name="kiosk"
+                src={"/projects/kiosk/image4.png"}
+                data-totalimages="4"
+                onClick={handleSliderImages}
+              />
+            </div>
+            <div className="basis-1/3 flex-1 ">
+              <p
+                style={{ marginBottom: 12, fontWeight: 700, fontSize: "22px" }}
+              >
+                Reclosure - Real Estate Management
+              </p>
+              <img
+                className="rounded-lg object-cover"
+                style={{ width: "420px" }}
+                layout="responsive"
+                name="reclosure"
+                src={"/projects/reclosure/image4.png"}
+                data-totalimages="6"
+                onClick={handleSliderImages}
               />
             </div>
           </div>
         </section>
       </main>
       <ImgsViewer
-        imgs={[web1, web2, web3, web7, web4, web5, web6].map((img) => ({
-          src: img,
-        }))}
+        imgs={sliderImages}
         currImg={imageIndex}
         isOpen={showSlider}
         onClickPrev={gotoPrev}
